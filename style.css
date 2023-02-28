@@ -18,15 +18,15 @@ body {
 .left__container__title>p {
   font-size: 24px;
   margin-bottom: 10px;
-} 
+}
 
 .left__container__title>h1 {
   font-weight: bold;
   font-size: 46px;
   margin: 20px 0 100px 20px;
-  background: linear-gradient(45deg, #847ebe, #181441, #24243e); /* градиентный фон для заголовка */
+  background: linear-gradient(45deg, #847ebe, #181441, #24243e);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* скрытие цвета текста */
+  -webkit-text-fill-color: transparent;
   animation: gradient 15s ease infinite;
 }
 
@@ -35,53 +35,14 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
-}
-
-
-
-.radio__btns-wrapper {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.radio__btns-wrapper li {
-  margin-right: 10px;
-}
-
-.radio__btns-wrapper input[type="radio"] {
-  display: none;
-}
-
-.radio__btns-wrapper label {
-  display: inline-block;
-  cursor: pointer;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.radio__btns-wrapper label:hover {
-  background-color: #ccc;
-}
-
-.radio__btns-wrapper input[type="radio"]:checked+label {
-  background-color: #ccc;
-  color: #fff;
-  border-color: #ccc;
 }
 
 .left__container__button {
@@ -90,29 +51,77 @@ body {
   margin-top: 20px;
 }
 
+
+.radio__btns-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.radio__btns-wrapper input[type="radio"] {
+  display: none;
+}
+
+.radio__btns-wrapper label {
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.radio__btns-wrapper label:hover {
+  background-color: #f2f2f2;
+}
+
+.radio__btns-wrapper input[type="radio"]:checked+label {
+  background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
+  content: ;
+  color: #fff;
+  border-color: #333;
+}
+
+#search-data-input {
+  height: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: none;
+  align-self: center;
+  font-size: 18px;
+}
+
+
+
 #button {
-  background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%); /* цвет фона кнопки */
-  color: black; /* цвет текста на кнопке */
+  background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
+  color: #fff;
+  border-color: 2px solid #333;
   border: none;
-  padding: 12px 24px; /* отступы внутри кнопки */
+  padding: 12px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  border-radius: 10px; /* скругление углов кнопки */
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  transition-duration: 0.3s; /* длительность анимации */
+  transition-duration: 0.3s;
 }
 
 #button:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 12px 32px 0 rgba(0,0,0,0.19); /* тень, которая будет добавлена при наведении на кнопку */
-  transform: translateY(-2px); /* движение кнопки вверх при наведении */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 32px 0 rgba(0, 0, 0, 0.19);
+  /* тень, которая будет добавлена при наведении на кнопку */
+  transform: translateY(-2px);
+  /* движение кнопки вверх при наведении */
 }
 
 #button::after {
-  content: "";
   background: rgba(255, 255, 255, 0.3);
   width: 100%;
   height: 100%;
@@ -139,8 +148,14 @@ aside {
   font-weight: bold;
   font-size: 32px;
   margin: 20px 0 0 20px;
-  background: linear-gradient(45deg, #847ebe, #181441, #24243e); /* градиентный фон для заголовка */
+  background: linear-gradient(45deg, #847ebe, #181441, #24243e);
+  /* градиентный фон для заголовка */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* скрытие цвета текста */
+  -webkit-text-fill-color: transparent;
+  /* скрытие цвета текста */
   animation: gradient 15s ease infinite;
+}
+
+.hiden {
+  display: none;
 }
