@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <title>Chuk Norirs Jokes</title>
+</head>
+
+<body>
+  <section class="left">
+    <div class="left__container">
+      <div class="left__container__title">
+        <h1>Chuck Norris Jokes</h1>
+        <p>Choose type of joke you wanna see:</p>
+      </div>
+      <ul class="radio__btns-wrapper">
+        <li><input type="radio" id="option1" name="options" value="option1">
+          <label for="option1">Random</label>
+        </li>
+        <li><input type="radio" id="option2" name="options" value="option2">
+          <label for="option2">From categories</label>
+        </li>
+        <li><input type="radio" id="option3" name="options" value="option3">
+          <label for="option3">Search</label>
+        </li>
+      </ul>      
+          <div class="left__container__joke">
+            <p id="joke"></p>
+          </div>
+          <div class="left__container__button">
+            <button id="button">Get a joke</button>
+          </div>
+    </div>
+  </section>
+
+  <aside class="favorite">
+    <div class="favorite__container">
+      <div class="favorite__container__title">
+        <h1 class="favorite__jokes-header">Favorite Jokes</h1>
+      </div>
+      <div class="favorite__container__jokes">
+        <ul id="favorite__jokes"></ul>
+      </div>
+    </div>
+  </aside>
+</body>
+
+</html>
