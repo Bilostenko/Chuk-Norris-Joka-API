@@ -79,7 +79,6 @@ body {
 
 .radio__btns-wrapper input[type="radio"]:checked+label {
   background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
-  content: ;
   color: #fff;
   border-color: #333;
 }
@@ -93,9 +92,8 @@ body {
   box-shadow: none;
   align-self: center;
   font-size: 18px;
+  margin-top: 20px;
 }
-
-
 
 #button {
   background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
@@ -156,6 +154,23 @@ aside {
   animation: gradient 15s ease infinite;
 }
 
+.left__container__joke {
+  background-color: #f2f2f2; 
+  border-radius: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  margin: 20px;
+}
+
+#joke {
+  font-size: 1.5rem;
+  font-weight: bold; 
+  color: #333; 
+  margin: 0; 
+}
+
+
 .hiden {
   display: none;
 }
+
