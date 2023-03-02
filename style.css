@@ -169,6 +169,32 @@ aside {
   margin: 0; 
 }
 
+.category-inputs input[type="radio"] {
+  display: none;
+}
+
+.category-inputs label {
+  display: inline-block;
+  padding: 5px 10px;
+  gap: 20px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.category-inputs > * {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="radio"]:checked + label {
+  background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
+  color: white;
+}
+
+
+
 
 .hiden {
   display: none;
