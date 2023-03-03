@@ -1,8 +1,11 @@
 const randomBtn = document.querySelector('#option1');
 const searchInput = document.querySelector('#search-data-input');
 const searchBtn = document.querySelector('#option3');
+const optionRadios = document.getElementsByName("options");
+const getButton = document.querySelector('#button');
+const categoryListContainer = document.querySelector('.joke__categories');
+const joke = document.querySelector('#joke');
 
-const button = document.querySelector('#button');
 
 searchBtn.addEventListener('click', () => {
   searchInput.classList.toggle('hiden');
@@ -19,50 +22,48 @@ async function getDataFromAPIRandom() {
 
 /* sending request to API for CATEGORY joke */
 let categoryJoke;
-async function getDataFromAPICategory() {
+async function gertCategoriesFromApi() {
   const response = await fetch('https://api.chucknorris.io/jokes/categories');
   categoryJoke = await response.json();
   return categoryJoke;
 }
 
-button.addEventListener('click', () => {
-  const allRadioBtns = document.getElementsByName("options");
-  for (let i = 0; i < allRadioBtns.length; i++) {
-    /* --------------------------------------------RANDOM----------------------- */
-    if (allRadioBtns[i].checked == true && allRadioBtns[i].value == 'option1') {
-      getDataFromAPIRandom().then(randomJoke => {
-        const joke = document.querySelector('#joke');
-        joke.innerHTML = randomJoke.value;
-      }).catch(error => {
-        console.error(error);
-      });
-      break;
-     /* ------------------------------ CATEGORY--------------------------------------- */
-    } else if (allRadioBtns[i].checked == true && allRadioBtns[i].value == 'option2') {
-      getDataFromAPICategory().then(categories => {
-        const categoryList = document.createElement('div');
-        categoryList.classList.add('category-inputs');
-        categories.forEach(category => {
-          const categoryInput = document.createElement('input');
-          categoryInput.type = 'radio';
-          categoryInput.name = 'category';
-          categoryInput.value = category;
-          categoryInput.id = `category-${category}`;
-          const label = document.createElement('label');
-          label.textContent = category;
-          label.htmlFor = `category-${category}`;
-          label.classList.add('category-label');
-          categoryList.appendChild(categoryInput);
-          categoryList.appendChild(label);
-        });
-        const joke = document.querySelector('#joke');
-        joke.innerHTML = '';
-        joke.appendChild(categoryList);
-      }).catch(error => {
-        console.error(error);
-      });
-      break;
-    }
-  }
+getButton.addEventListener('click', handleGet)
 
-})
+
+function handleGet() {
+  if (optionRadios[0].checked) {
+    getDataFromAPIRandom().then(randomJoke => {
+      joke.innerHTML = randomJoke.value;
+    }).catch(console.error)
+  } else if (optionRadios[1].checked) {
+    joke.innerHTML = '';
+    if (categoryListContainer.matches(":empty")) {
+      gertCategoriesFromApi().then(showCategories).catch(console.error);
+      categoryListContainer.appendChild(categoryList);
+
+    } else {
+
+    }
+  } else if (optionRadios[2].checked) {
+  }
+}
+
+function showCategories(categories) {
+  const categoryList = document.createElement('div');
+  categoryList.classList.add('category-inputs');
+  categories.forEach(category => {
+    const categoryInput = document.createElement('input');
+    categoryInput.type = 'radio';
+    categoryInput.name = 'category';
+    categoryInput.value = category;
+    categoryInput.id = `category-${category}`;
+    const label = document.createElement('label');
+    label.textContent = category;
+    label.htmlFor = `category-${category}`;
+    label.classList.add('category-label');
+    categoryList.appendChild(categoryInput);
+    categoryList.appendChild(label);
+  });
+  categoryListContainer.appendChild(categoryList);
+}
