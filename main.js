@@ -27,6 +27,13 @@ async function gertCategoriesFromApi() {
   categoryJoke = await response.json();
   return categoryJoke;
 }
+let jokeFromCategory;
+async function getJokeFromCategoryApi() {
+  const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+  const response = await fetch(`https://api.chucknorris.io/jokes/random?category=${selectedCategory}`);
+  jokeFromCategory = await response.json();
+  return jokeFromCategory;
+}
 
 getButton.addEventListener('click', handleGet)
 
@@ -43,7 +50,9 @@ function handleGet() {
       categoryListContainer.appendChild(categoryList);
 
     } else {
-
+      getJokeFromCategoryApi().then(jokeFromCategory => {
+        joke.innerHTML = jokeFromCategory.value;
+      }).catch(console.error)
     }
   } else if (optionRadios[2].checked) {
   }
