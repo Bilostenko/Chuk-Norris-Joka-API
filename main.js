@@ -21,12 +21,14 @@ async function getDataFromAPIRandom() {
 }
 
 /* sending request to API for CATEGORY joke */
+/* choose category */
 let categoryJoke;
 async function gertCategoriesFromApi() {
   const response = await fetch('https://api.chucknorris.io/jokes/categories');
   categoryJoke = await response.json();
   return categoryJoke;
 }
+/* choose joke inside category */
 let jokeFromCategory;
 async function getJokeFromCategoryApi() {
   const selectedCategory = document.querySelector('input[name="category"]:checked').value;
@@ -35,28 +37,59 @@ async function getJokeFromCategoryApi() {
   return jokeFromCategory;
 }
 
+let jokeFromSearch;
+async function getJokeFromSearchApi(searchValue) {
+  const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${searchValue}`);
+  jokeFromSearch = await response.json();
+  return jokeFromSearch.result[0];
+}
+
 getButton.addEventListener('click', handleGet)
 
 
 function handleGet() {
+  /* Random */
   if (optionRadios[0].checked) {
-    getDataFromAPIRandom().then(randomJoke => {
-      joke.innerHTML = randomJoke.value;
-    }).catch(console.error)
+    getDataFromAPIRandom()
+      .then(randomJoke => {
+        joke.innerHTML = randomJoke.value;
+        categoryListContainer.innerHTML = ''; // Очистить контейнер с категориями
+        searchInput.value = ''; // Сбросить значение поиска
+      })
+      .catch(console.error);
+    /* From categories */
   } else if (optionRadios[1].checked) {
     joke.innerHTML = '';
-    if (categoryListContainer.matches(":empty")) {
-      gertCategoriesFromApi().then(showCategories).catch(console.error);
+    if (categoryListContainer.matches(':empty')) {
+      gertCategoriesFromApi()
+        .then(showCategories)
+        .catch(console.error);
       categoryListContainer.appendChild(categoryList);
-
     } else {
-      getJokeFromCategoryApi().then(jokeFromCategory => {
-        joke.innerHTML = jokeFromCategory.value;
-      }).catch(console.error)
+      getJokeFromCategoryApi()
+        .then(jokeFromCategory => {
+          joke.innerHTML = jokeFromCategory.value;
+          searchInput.value = ''; // Сбросить значение поиска
+        })
+        .catch(console.error);
     }
+    /* Search */
   } else if (optionRadios[2].checked) {
+    const searchValue = searchInput.value;
+    if (searchValue) {
+      joke.innerHTML = '';
+      getJokeFromSearchApi(searchValue)
+        .then(jokeFromSearch => {
+          joke.innerHTML = jokeFromSearch.value;
+          categoryListContainer.innerHTML = ''; // Очистить контейнер с категориями
+        })
+        .catch(console.error);
+    } else {
+      joke.innerHTML = 'Enter your search term';
+    }
   }
 }
+
 
 function showCategories(categories) {
   const categoryList = document.createElement('div');
