@@ -1,6 +1,7 @@
 const randomBtn = document.querySelector('#option1');
-const searchInput = document.querySelector('#search-data-input');
+const fromCategoryBtn = document.querySelector('#option2');
 const searchBtn = document.querySelector('#option3');
+const searchInput = document.querySelector('#search-data-input');
 const optionRadios = document.getElementsByName("options");
 const getButton = document.querySelector('#button');
 const categoryListContainer = document.querySelector('.joke__categories');
@@ -42,17 +43,21 @@ async function getJokeFromSearchApi(searchValue) {
 }
 
 /* reset ALL values */
-/* function resetAll (){
+function resetAll() {
   joke.innerHTML = '';
   categoryListContainer.innerHTML = '';
   searchInput.value = '';
-  searchInput.classList.remove('hiden');
+  searchInput.classList.add('hiden');
 }
-searchBtn.addEventListener('click', resetAll); */
-
+randomBtn.addEventListener('click', resetAll)
+fromCategoryBtn.addEventListener('click', resetAll)
 searchBtn.addEventListener('click', () => {
-  searchInput.classList.toggle('hiden');
-})
+  searchInput.classList.remove('hiden')
+  joke.innerHTML = '';
+  categoryListContainer.innerHTML = '';
+  searchInput.value = '';
+});
+
 
 
 
@@ -64,13 +69,11 @@ function handleGet() {
     getDataFromAPIRandom()
       .then(randomJoke => {
         joke.innerHTML = randomJoke.value;
-        categoryListContainer.innerHTML = ''; // Очистить контейнер с категориями
-        searchInput.value = ''; // Сбросить значение поиска
       })
       .catch(console.error);
     /* From categories */
   } else if (optionRadios[1].checked) {
-    joke.innerHTML = '';
+    createFavoriteBtn()
     if (categoryListContainer.matches(':empty')) {
       gertCategoriesFromApi()
         .then(showCategories)
@@ -80,7 +83,6 @@ function handleGet() {
       getJokeFromCategoryApi()
         .then(jokeFromCategory => {
           joke.innerHTML = jokeFromCategory.value;
-          searchInput.value = ''; // Сбросить значение поиска
         })
         .catch(console.error);
     }
@@ -88,11 +90,9 @@ function handleGet() {
   } else if (optionRadios[2].checked) {
     const searchValue = searchInput.value;
     if (searchValue) {
-      joke.innerHTML = '';
       getJokeFromSearchApi(searchValue)
         .then(jokeFromSearch => {
           joke.innerHTML = jokeFromSearch.value;
-          categoryListContainer.innerHTML = ''; // Очистить контейнер с категориями
         })
         .catch(console.error);
     } else {
@@ -119,4 +119,13 @@ function showCategories(categories) {
     categoryList.appendChild(label);
   });
   categoryListContainer.appendChild(categoryList);
+}
+
+/* add jokes to favorite and remove from favorite */
+
+function createFavoriteBtn() {
+  const favoriteBtn = document.createElement('button');
+  favoriteBtn.classList.add('favorite-btn');
+  favoriteBtn.textContent = 'Add to favorite';
+  return favoriteBtn;
 }
