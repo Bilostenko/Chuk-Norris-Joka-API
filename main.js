@@ -6,11 +6,6 @@ const getButton = document.querySelector('#button');
 const categoryListContainer = document.querySelector('.joke__categories');
 const joke = document.querySelector('#joke');
 
-
-searchBtn.addEventListener('click', () => {
-  searchInput.classList.toggle('hiden');
-})
-
 /* sending request to API for RANDOM joke */
 let randomJoke;
 async function getDataFromAPIRandom() {
@@ -28,6 +23,7 @@ async function gertCategoriesFromApi() {
   categoryJoke = await response.json();
   return categoryJoke;
 }
+
 /* choose joke inside category */
 let jokeFromCategory;
 async function getJokeFromCategoryApi() {
@@ -37,6 +33,7 @@ async function getJokeFromCategoryApi() {
   return jokeFromCategory;
 }
 
+/* sending request to API for SEARCH joke */
 let jokeFromSearch;
 async function getJokeFromSearchApi(searchValue) {
   const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${searchValue}`);
@@ -44,8 +41,22 @@ async function getJokeFromSearchApi(searchValue) {
   return jokeFromSearch.result[0];
 }
 
-getButton.addEventListener('click', handleGet)
+/* reset ALL values */
+/* function resetAll (){
+  joke.innerHTML = '';
+  categoryListContainer.innerHTML = '';
+  searchInput.value = '';
+  searchInput.classList.remove('hiden');
+}
+searchBtn.addEventListener('click', resetAll); */
 
+searchBtn.addEventListener('click', () => {
+  searchInput.classList.toggle('hiden');
+})
+
+
+
+getButton.addEventListener('click', handleGet)
 
 function handleGet() {
   /* Random */
