@@ -39,7 +39,8 @@ let jokeFromSearch;
 async function getJokeFromSearchApi(searchValue) {
   const response = await fetch(`https://api.chucknorris.io/jokes/search?query=${searchValue}`);
   jokeFromSearch = await response.json();
-  return jokeFromSearch.result[0];
+  console.log(jokeFromSearch)
+  return jokeFromSearch.result[Math.floor(Math.random() * jokeFromSearch.total)];
 }
 
 /* reset ALL values */
@@ -73,7 +74,6 @@ function handleGet() {
       .catch(console.error);
     /* From categories */
   } else if (optionRadios[1].checked) {
-    createFavoriteBtn()
     if (categoryListContainer.matches(':empty')) {
       gertCategoriesFromApi()
         .then(showCategories)
