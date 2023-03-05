@@ -123,9 +123,11 @@ function showCategories(categories) {
 
 /* add jokes to favorite and remove from favorite */
 
-function createFavoriteBtn() {
-  const favoriteBtn = document.createElement('button');
-  favoriteBtn.classList.add('favorite-btn');
-  favoriteBtn.textContent = 'Add to favorite';
-  return favoriteBtn;
-}
+const favoriteJokes = document.querySelector('.favorite-jokes');
+const addToFavoriteBtn = document.querySelector('#add-to-favorite');
+const removeFavoriteBtn = document.querySelector('#remove-from-favorite');
+
+addToFavoriteBtn.addEventListener('click', addToFavorite)
+removeFavoriteBtn.addEventListener('click', removeFromFavorite)
+
+function addToFavorite() {}
