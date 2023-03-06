@@ -146,11 +146,32 @@ aside {
   font-size: 32px;
   margin: 20px 0 0 20px;
   background: linear-gradient(45deg, #847ebe, #181441, #24243e);
-  /* градиентный фон для заголовка */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* скрытие цвета текста */
   animation: gradient 15s ease infinite;
+  margin-bottom: 10px;
+}
+
+.favorite__jokes-text {
+margin-bottom: 20px;
+margin-left: 10px;
+}
+
+#favorite__jokes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#favorite__jokes li {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
 }
 
 .left__container__joke {
@@ -196,4 +217,6 @@ input[type="radio"]:checked + label {
 .hiden {
   display: none;
 }
+
+
 
