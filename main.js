@@ -123,11 +123,39 @@ function showCategories(categories) {
 
 /* add jokes to favorite and remove from favorite */
 
-const favoriteJokes = document.querySelector('.favorite-jokes');
+const favoriteJokesList = document.querySelector('#favorite__jokes');
 const addToFavoriteBtn = document.querySelector('#add-to-favorite');
 const removeFavoriteBtn = document.querySelector('#remove-from-favorite');
 
+let addedJokes = [];
 addToFavoriteBtn.addEventListener('click', addToFavorite)
 removeFavoriteBtn.addEventListener('click', removeFromFavorite)
 
-function addToFavorite() {}
+/* add JOKE to FAVORITE and remove JOKE from Favorite */
+function addToFavorite() {
+/*          add */
+  const jokeText = joke.textContent;
+  if (addedJokes.includes(jokeText)) {
+    alert('Nothing to add');
+    return;
+  }
+  const newFavoriteJoke = document.createElement('li');
+  newFavoriteJoke.innerHTML = jokeText;
+  favoriteJokesList.appendChild(newFavoriteJoke);
+  addedJokes.push(jokeText);
+
+/*          remove */
+  const selectedJokes = favoriteJokesList.querySelectorAll('li');
+  if (selectedJokes.length === 0) {
+    alert('No joke to remove');
+    return;
+  }
+  selectedJokes.forEach(joke => {
+    joke.addEventListener('click', () => {
+      if (addedJokes.includes(joke.textContent)) {
+        favoriteJokesList.removeChild(joke);
+        addedJokes = addedJokes.filter(item => item !== joke.textContent);
+      }
+    });
+  });
+}

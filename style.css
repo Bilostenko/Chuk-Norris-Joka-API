@@ -47,6 +47,7 @@ body {
 
 .left__container__button {
   display: flex;
+  gap: 20px;
   justify-content: center;
   margin-top: 20px;
 }
@@ -95,7 +96,7 @@ body {
   margin-top: 20px;
 }
 
-#button {
+#button, #add-to-favorite{
   background: linear-gradient(92.01deg, #8ea7ff 0%, #7291ff 100%);
   color: #fff;
   border-color: 2px solid #333;
@@ -112,14 +113,12 @@ body {
   transition-duration: 0.3s;
 }
 
-#button:hover {
+#button:hover, #add-to-favorite:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 32px 0 rgba(0, 0, 0, 0.19);
-  /* тень, которая будет добавлена при наведении на кнопку */
   transform: translateY(-2px);
-  /* движение кнопки вверх при наведении */
 }
 
-#button::after {
+#button::after, #add-to-favorite::after {
   background: rgba(255, 255, 255, 0.3);
   width: 100%;
   height: 100%;
