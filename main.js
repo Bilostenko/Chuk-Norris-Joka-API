@@ -16,6 +16,7 @@ async function getDataFromAPIRandom() {
   return randomJoke;
 }
 
+
 /* sending request to API for CATEGORY joke */
 /* choose category */
 let categoryJoke;
